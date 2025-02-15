@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DiscussionForum.Models.Discussion>
+
+<h2>Discussions</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var discussion in Model)
+        {
+            <tr>
+                <td>@discussion.Title</td>
+                <td>@discussion.Content</td>
+                <td>
+                    <a href="@Url.Action("Details", "Discussion", new { id = discussion.Id })">Details</a> |
+                    <a href="@Url.Action("Edit", "Discussion", new { id = discussion.Id })">Edit</a> |
+                    <a href="@Url.Action("Delete", "Discussion", new { id = discussion.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Discussion")">Create New Discussion</a>
